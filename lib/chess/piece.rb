@@ -1,0 +1,7 @@
+require File.dirname(__FILE__) + "/piece/piece"
+require File.dirname(__FILE__) + "/piece/pawn"
+require File.dirname(__FILE__) + "/piece/knight"
+require File.dirname(__FILE__) + "/piece/rook"
+require File.dirname(__FILE__) + "/piece/bishop"
+require File.dirname(__FILE__) + "/piece/queen"
+require File.dirname(__FILE__) + "/piece/king"

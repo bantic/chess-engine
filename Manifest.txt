@@ -1,0 +1,8 @@
+.autotest
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+bin/chess
+lib/chess.rb
+test/test_chess.rb
