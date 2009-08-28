@@ -39,10 +39,26 @@ describe Chess::Board do
   end
   
   describe "attacking" do
-    xit "should work" do
+    it "should work" do
       b = Board.new
       b[0,0] = Bishop.new(:white)
-      b.attacked?( [0,0], :black).should be_false
+      b.attacked?( Position.new(0,0), :black).should be_false
+      
+      b[3,3] = Bishop.new(:black)
+      b.attacked?( Position.new(0,0), :black).should be_true
+      
+      # piece in the way
+      b[2,2] = Bishop.new(:white)
+      b.attacked?( Position.new(0,0), :black).should be_false
+    end
+  end
+  
+  describe "in_check?" do
+    it "should work ok" do
+      b = Board.new
+      b[3,3] = King.new(:white)
+      b[4,3] = Queen.new(:black)
+      b.in_check?( :white ).should be_true
     end
   end
 end

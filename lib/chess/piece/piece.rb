@@ -9,8 +9,10 @@ module Chess
     def legal_move?(board, from, to)
       return false if from.w == to.w && from.h == to.h
       return false unless board.in_bounds?(from) && board.in_bounds?(to)
-      return false unless board[from] == self
-      return false if board[to] && board[to].color == @color
+      
+      piece = board[from]
+      return false if piece != self
+      return false if board[to] && board[to].color == piece.color
       return false unless board.clear_path?(from, to)
       return true
     end

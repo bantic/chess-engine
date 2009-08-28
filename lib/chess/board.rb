@@ -22,6 +22,26 @@ module Chess
       return self[from].legal_move?(self, from, to)
     end
     
+    def attacked?(pos, color)
+      @width.times do |w|
+        @height.times do |h|
+          if piece = self[w,h]
+            return true if piece.color == color && piece.legal_move?(self, Position.new(w,h), pos)
+          end
+        end
+      end
+      return false
+    end
+
+    def in_check?(color)
+      @width.times do |w|
+        @height.times do |h|
+          if self[w,h] && self[w,h].name == "k" && self[w,h].color == color
+            return attacked?( Position.new(w,h), color == :white ? :black : :white)
+          end
+        end
+      end
+    end
     
     def clear_path?(from, to)
       return true if ( (from.h - to.h).abs == 1 && (from.w - to.w).abs == 1 ||
